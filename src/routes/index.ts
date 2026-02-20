@@ -11,8 +11,16 @@ import {
 } from '@/utils/turnstile';
 
 export default defineEventHandler(async (event) => {
-  // handle cors, if applicable
-  if (isPreflightRequest(event)) return handleCors(event, {});
+  // handle cors preflight requests
+  if (event.node.req.method === 'OPTIONS') {
+    setResponseHeaders(event, {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Max-Age': '86400',
+    });
+    return setResponseStatus(event, 204);
+  }
 
   // parse destination URL
   const destination = getQuery<{ destination?: string }>(event).destination;
