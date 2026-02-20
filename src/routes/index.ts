@@ -1,14 +1,14 @@
-import { getBodyBuffer } from '@/utils/body';
+import { getBodyBuffer } from '~/utils/body';
 import {
   getProxyHeaders,
   getAfterResponseHeaders,
   cleanupHeadersBeforeProxy,
-} from '@/utils/headers';
+} from '~/utils/headers';
 import {
   createTokenIfNeeded,
   isAllowedToMakeRequest,
   setTokenHeader,
-} from '@/utils/turnstile';
+} from '~/utils/turnstile';
 
 export default defineEventHandler(async (event) => {
   // handle cors preflight requests
