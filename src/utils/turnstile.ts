@@ -1,6 +1,6 @@
 import { H3Event, EventHandlerRequest } from 'h3';
 import jsonwebtoken from '@tsndr/cloudflare-worker-jwt';
-import { getIp } from '@/utils/ip';
+import { getIp } from '~/utils/ip';
 
 const turnstileSecret = process.env.TURNSTILE_SECRET ?? null;
 const jwtSecret = process.env.JWT_SECRET ?? null;
