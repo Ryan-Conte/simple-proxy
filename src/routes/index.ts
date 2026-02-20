@@ -13,12 +13,13 @@ import {
 export default defineEventHandler(async (event) => {
   // handle cors preflight requests
   if (event.node.req.method === 'OPTIONS') {
+    const requestHeaders =
+      event.node.req.headers['access-control-request-headers'] || '*';
     setResponseHeaders(event, {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods':
         'GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD',
-      'Access-Control-Allow-Headers':
-        'Content-Type, Authorization, X-Cookie, X-Referer, X-Origin, X-Token',
+      'Access-Control-Allow-Headers': requestHeaders,
       'Access-Control-Max-Age': '86400',
     });
     return setResponseStatus(event, 204);
