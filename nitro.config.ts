@@ -10,7 +10,13 @@ export default defineNitroConfig({
   srcDir: './src',
   preset: 'cloudflare_module',
   rollupConfig: {
-    external: ['node:events', 'node:perf_hooks', 'node:stream', 'node:tty'],
+    external: [
+      'node:events',
+      'node:perf_hooks',
+      'node:stream',
+      'node:tty',
+      '__STATIC_CONTENT_MANIFEST',
+    ],
   },
   alias: {
     '@': join(__dirname, 'src'),
