@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 export default defineNitroConfig({
   noPublicDir: true,
   srcDir: './src',
-  preset: 'cloudflare',
+  preset: 'cloudflare_workers',
   alias: {
     '@': join(__dirname, 'src'),
   },
