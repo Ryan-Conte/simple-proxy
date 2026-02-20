@@ -15,8 +15,10 @@ export default defineEventHandler(async (event) => {
   if (event.node.req.method === 'OPTIONS') {
     setResponseHeaders(event, {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Cookie, X-Referer, X-Origin, X-Token',
+      'Access-Control-Allow-Methods':
+        'GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD',
+      'Access-Control-Allow-Headers':
+        'Content-Type, Authorization, X-Cookie, X-Referer, X-Origin, X-Token',
       'Access-Control-Max-Age': '86400',
     });
     return setResponseStatus(event, 204);
